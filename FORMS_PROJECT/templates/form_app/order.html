@@ -2,6 +2,13 @@
 <h1>This is the Order page</h1>
 
 {% block content %}
+<h2>{{ note }}</h2>
+{% if created_pizza_pk %}
+<div class="alert alert-primary" role="alert">
+  <a href="{% url 'edit_order' created_pizza_pk %}">Edit Your Order</a>
+</div>
+{% endif %}
+
 <div class="container">
   {% if note %}
   <div class="alert alert-primary" role="alert">
@@ -13,10 +20,21 @@
     <hr />
     <input type="submit" class="btn btn-danger btn-lg" value="Order Pizza" />
   </form>
+
+  <br />
+  <br />
+  <br />
+  <br />
+  <br /><br />
+  Want more than one pizza?
+  <form action="{% url 'pizzas' %}" method="get">
+    {% csrf_token %} {{ multiple_form | crispy }}
+    <input type="submit" value="Get Pizzas" class="btn btn-outline-danger" />
+  </form>
 </div>
 <br />
 <br />
 <br />
 <br />
-
+<br /><br />
 {% endblock %}

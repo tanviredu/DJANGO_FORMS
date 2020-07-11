@@ -25,8 +25,14 @@ class PizzaForm(forms.ModelForm):
     class Meta:
         
         model = Pizzas
-        fields = ['topping1', 'topping2', 'size','image']
+        fields = ['topping1', 'topping2', 'size']
         labels = {
             'topping1' : "Topping 1",
             'topping2' : "Topping 2"
         }
+
+class MultiplePizzaForm(forms.Form):
+    ## we just add a number 
+    ## it just take a number
+    ## nothing special
+    number = forms.IntegerField(min_value=2,max_value=6)
