@@ -15,7 +15,8 @@ class Size(models.Model):
 class Pizzas(models.Model):
     topping1 = models.CharField(max_length=100)
     topping2 = models.CharField(max_length=100)
-    size = models.ForeignKey(Size, on_delete=models.CASCADE)
+    size     = models.ForeignKey(Size, on_delete=models.CASCADE)
+    image    = models.ImageField(upload_to='profile_pics')
 
     def __str__(self):
         return "Topping1 :   {}   , Topping2:    {} ,    Size:   {} ".format(self.topping1,self.topping2,self.size)       
